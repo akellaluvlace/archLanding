@@ -3,7 +3,7 @@ import { Box, AppBar, Toolbar, Typography, IconButton, Container, Link as MuiLin
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import LandingPage from './components/LandingPage';
-import { grey } from '@mui/material/colors';
+// Removed: import { grey } from '@mui/material/colors'; // This was unused
 
 export const APP_BAR_HEIGHT = 64;
 

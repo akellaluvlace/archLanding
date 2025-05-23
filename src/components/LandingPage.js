@@ -1,27 +1,28 @@
 import React from 'react';
-import { Box, Container, Typography, Grid, Paper, Icon, useTheme, alpha, Divider } from '@mui/material';
+// Removed Icon and Divider from this import as they were unused
+import { Box, Container, Typography, Grid, Paper, useTheme, alpha } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faPython, faGoogle, faStripe } from '@fortawesome/free-brands-svg-icons';
 import { faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import SpeedIcon from '@mui/icons-material/Speed';
 import BuildIcon from '@mui/icons-material/Build';
-import { grey } from '@mui/material/colors';
+// Removed: import { grey } from '@mui/material/colors'; // This was unused
 import { APP_BAR_HEIGHT } from '../App'; // Assuming this path is correct
 
 const FeatureItem = ({ icon, title, children, faIcon }) => {
-  const theme = useTheme();
+  // Removed: const theme = useTheme(); // This was unused in FeatureItem
   return (
     <Box
       sx={{
-        textAlign: 'left',
+        // Removed the first 'textAlign: 'left',' to resolve duplicate key
         p: {xs: 2, sm: 2.5},
         width: '100%',
         mb: {xs: 2, md: 2.5},
         display: 'flex',
         flexDirection: {xs: 'column', sm: 'row'},
         alignItems: {xs: 'center', sm: 'flex-start'},
-        textAlign: {xs: 'center', sm: 'left'},
+        textAlign: {xs: 'center', sm: 'left'}, // Kept this responsive textAlign
       }}
     >
       <Box sx={{ mr: {sm: 2.5}, mb: {xs: 1.5, sm: 0}, display: 'flex', justifyContent: 'center', color: 'primary.main' }}>
