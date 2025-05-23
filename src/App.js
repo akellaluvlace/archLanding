@@ -3,7 +3,7 @@ import { Box, AppBar, Toolbar, Typography, IconButton, Container, Link as MuiLin
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import LandingPage from './components/LandingPage';
-// Removed: import { grey } from '@mui/material/colors'; // This was unused
+import CountdownTimer from './components/CountdownTimer'; // Import the new component
 
 export const APP_BAR_HEIGHT = 64;
 
@@ -12,15 +12,19 @@ function App({ toggleTheme }) {
   const isDarkMode = theme.palette.mode === 'dark';
   const footerBgColor = alpha(theme.palette.background.paper, 0.55);
 
+  // Define the launch date.
+  // Important: Use a format that JavaScript's `Date` constructor understands well.
+  // ISO 8601 format "YYYY-MM-DDTHH:mm:ss" is generally reliable.
+  // This will be interpreted in the user's local timezone.
+  // If you want it to be UTC, append 'Z': "2025-06-06T00:00:00Z"
+  const LAUNCH_DATE = "2025-06-06T00:00:00";
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%', background: 'transparent' }}>
       <AppBar
         position="sticky"
         elevation={0}
-        sx={{ height: APP_BAR_HEIGHT,
-          borderRadius: 0,
-         }}
+        sx={{ height: APP_BAR_HEIGHT, borderRadius: 0 }}
       >
         <Toolbar sx={{ justifyContent: 'space-between', height: '100%' }}>
           <MuiLink href="/" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
@@ -32,11 +36,17 @@ function App({ toggleTheme }) {
                 fontFamily: theme.typography.monospace,
                 fontWeight: 700,
                 letterSpacing: '.05rem',
+                mr: 2, // Add some margin if countdown is next to it
               }}
             >
               Architech
             </Typography>
           </MuiLink>
+
+          {/* Container for Countdown and potentially other middle items */}
+          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <CountdownTimer targetDate={LAUNCH_DATE} />
+          </Box>
 
           <IconButton sx={{ ml: 1 }} onClick={toggleTheme} color="inherit" aria-label="toggle theme">
             {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
