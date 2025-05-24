@@ -6,7 +6,7 @@ import { faShieldAlt, faUsersGear, faGraduationCap } from '@fortawesome/free-sol
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import SpeedIcon from '@mui/icons-material/Speed';
 import BuildIcon from '@mui/icons-material/Build';
-import { APP_BAR_HEIGHT } from '../App'; // Assuming this path is correct
+import { APP_BAR_HEIGHT } from '../App';
 
 const FeatureItem = ({ icon, title, children, faIcon }) => {
   return (
@@ -102,23 +102,19 @@ const LandingPage = () => {
   return (
     <Box sx={{ flexGrow: 1, width: '100%', py: {xs: 3, md: 4} }}>
       <Container maxWidth="md">
-        {/* THIS IS THE FIRST PAPER (HERO SECTION) THAT NEEDS FIXING */}
         <Paper
           elevation={0}
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center', // Changed from 'flex-start'
+            justifyContent: 'center',
             alignItems: 'center',
-            minHeight: `calc(90vh - ${APP_BAR_HEIGHT}px - ${theme.spacing(8)})`, // Kept minHeight
-            // maxHeight: `calc(100vh - ${APP_BAR_HEIGHT}px - ${theme.spacing(4)})`, // REMOVED maxHeight
+            minHeight: `calc(90vh - ${APP_BAR_HEIGHT}px - ${theme.spacing(8)})`,
             width: '100%',
             textAlign: 'center',
-            p: { xs: 2, sm: 3, md: 4 }, // General padding
-            // pb: { xs: 3 }, // REMOVED redundant specific pb
+            p: { xs: 2, sm: 3, md: 4 },
             fontFamily: theme.typography.monospace,
             color: heroTextColor,
-            // overflow: 'hidden', // REMOVED overflow: 'hidden'
             mb: {xs: 4, md: 6},
           }}
         >
@@ -246,7 +242,6 @@ const LandingPage = () => {
           </Box>
         </Paper>
 
-        {/* THIS IS THE SECOND PAPER (Why Architech?), which should be fine */}
         <Paper
             elevation={0}
             sx={{
