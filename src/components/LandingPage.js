@@ -6,7 +6,7 @@ import { faShieldAlt, faUsersGear, faGraduationCap } from '@fortawesome/free-sol
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import SpeedIcon from '@mui/icons-material/Speed';
 import BuildIcon from '@mui/icons-material/Build';
-import { APP_BAR_HEIGHT } from '../App';
+import { APP_BAR_HEIGHT } from '../App'; // Assuming this path is correct
 
 const FeatureItem = ({ icon, title, children, faIcon }) => {
   return (
@@ -16,19 +16,27 @@ const FeatureItem = ({ icon, title, children, faIcon }) => {
         width: '100%',
         mb: {xs: 2, md: 2.5},
         display: 'flex',
-        flexDirection: {xs: 'column', sm: 'row'},
-        alignItems: {xs: 'center', sm: 'flex-start'},
-        textAlign: {xs: 'center', sm: 'left'},
+        flexDirection: {xs: 'column', md: 'row'},
+        alignItems: {xs: 'center', md: 'flex-start'},
+        textAlign: {xs: 'center', md: 'left'},
       }}
     >
-      <Box sx={{ mr: {sm: 2.5}, mb: {xs: 1.5, sm: 0}, display: 'flex', justifyContent: 'center', color: 'primary.main' }}>
+      <Box sx={{
+        mr: {md: 2.5},
+        mb: {xs: 1.5, md: 0},
+        display: 'flex',
+        justifyContent: 'center',
+        color: 'primary.main'
+      }}>
         {faIcon ? (
           <FontAwesomeIcon icon={faIcon} style={{ fontSize: '2.25rem' }} />
         ) : (
           React.cloneElement(icon, { sx: { fontSize: 36 } })
         )}
       </Box>
-      <Box sx={{ minWidth: { sm: 0 } }}> {/* Allow this box to shrink when in a row */}
+      <Box sx={{
+        minWidth: { md: 0 }
+      }}>
         <Typography variant="h6" component="h3" sx={{ fontWeight: 'medium', mb: 0.5, overflowWrap: 'break-word' }}>
           {title}
         </Typography>
@@ -94,61 +102,62 @@ const LandingPage = () => {
   return (
     <Box sx={{ flexGrow: 1, width: '100%', py: {xs: 3, md: 4} }}>
       <Container maxWidth="md">
+        {/* THIS IS THE FIRST PAPER (HERO SECTION) THAT NEEDS FIXING */}
         <Paper
           elevation={0}
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'flex-start', 
+            justifyContent: 'center', // Changed from 'flex-start'
             alignItems: 'center',
-            minHeight: `calc(90vh - ${APP_BAR_HEIGHT}px - ${theme.spacing(8)})`,
-            maxHeight: `calc(100vh - ${APP_BAR_HEIGHT}px - ${theme.spacing(4)})`,
+            minHeight: `calc(90vh - ${APP_BAR_HEIGHT}px - ${theme.spacing(8)})`, // Kept minHeight
+            // maxHeight: `calc(100vh - ${APP_BAR_HEIGHT}px - ${theme.spacing(4)})`, // REMOVED maxHeight
             width: '100%',
             textAlign: 'center',
-            p: { xs: 2, sm: 3, md: 4 },
-            pb: { xs: 3 },
+            p: { xs: 2, sm: 3, md: 4 }, // General padding
+            // pb: { xs: 3 }, // REMOVED redundant specific pb
             fontFamily: theme.typography.monospace,
             color: heroTextColor,
-            overflow: 'hidden', 
+            // overflow: 'hidden', // REMOVED overflow: 'hidden'
             mb: {xs: 4, md: 6},
           }}
         >
-          <Typography variant="h5" component="p" sx={{ 
-            mb: 1, 
-            fontFamily: 'inherit', 
-            color: 'inherit', 
-            fontWeight: 'bold', 
+          <Typography variant="h5" component="p" sx={{
+            mb: 1,
+            fontFamily: 'inherit',
+            color: 'inherit',
+            fontWeight: 'bold',
             fontSize: { xs: '1.05rem', sm: '1.2rem', md: '1.5rem' },
             overflowWrap: 'break-word',
           }}>
             AI without prompt engineering?
           </Typography>
-          <Typography variant="h5" component="p" sx={{ 
-            mb: 1, 
-            fontFamily: 'inherit', 
-            color: 'inherit', 
-            fontWeight: 'bold', 
+          <Typography variant="h5" component="p" sx={{
+            mb: 1,
+            fontFamily: 'inherit',
+            color: 'inherit',
+            fontWeight: 'bold',
             fontSize: { xs: '1.05rem', sm: '1.2rem', md: '1.5rem' },
             overflowWrap: 'break-word',
            }}>
             Like throwing rocks at a supercar to start it.
           </Typography>
-          <Typography variant="h5" component="p" sx={{ 
-            mb: {xs: 1.5, sm: 2}, 
-            fontFamily: 'inherit', 
-            color: 'inherit', 
-            fontWeight: 'bold', 
+          <Typography variant="h5" component="p" sx={{
+            mb: {xs: 1.5, sm: 2},
+            fontFamily: 'inherit',
+            color: 'inherit',
+            fontWeight: 'bold',
             fontSize: { xs: '1.05rem', sm: '1.2rem', md: '1.5rem' },
             overflowWrap: 'break-word',
           }}>
             You don't want that rattle. You want push button magic.
           </Typography>
-          <Typography variant="h1" component="p" sx={{ 
-            mt: {xs: 2, sm: 2.5, md: 3}, 
-            mb: {xs: 2, sm: 2.5, md: 3}, 
-            fontWeight: 'bold', 
-            fontFamily: 'inherit', 
-            color: 'inherit', 
+          <Typography variant="h1" component="p" sx={{
+            mt: {xs: 2, sm: 2.5, md: 3},
+            mb: {xs: 2, sm: 2.5, md: 3},
+            fontWeight: 'bold',
+            fontFamily: 'inherit',
+            color: 'inherit',
             fontSize: { xs: '2.2rem', sm: '3.0rem', md: '4.0rem' },
             overflowWrap: 'break-word',
           }}>
@@ -174,21 +183,21 @@ const LandingPage = () => {
             }}
           />
 
-          <Typography variant="h3" component="p" sx={{ 
-            mt: {xs: 2, sm: 2.5, md: 3}, 
-            mb: {xs: 1, sm: 1.5, md: 2}, 
-            fontWeight: 'bold', 
-            fontFamily: 'inherit', 
-            color: 'inherit', 
+          <Typography variant="h3" component="p" sx={{
+            mt: {xs: 2, sm: 2.5, md: 3},
+            mb: {xs: 1, sm: 1.5, md: 2},
+            fontWeight: 'bold',
+            fontFamily: 'inherit',
+            color: 'inherit',
             fontSize: { xs: '1.4rem', sm: '2.0rem', md: '2.5rem' },
             overflowWrap: 'break-word',
           }}>
             To prompt easily.
           </Typography>
-          <Typography variant="h3" component="p" sx={{ 
-            fontWeight: 'bold', 
-            fontFamily: 'inherit', 
-            color: 'inherit', 
+          <Typography variant="h3" component="p" sx={{
+            fontWeight: 'bold',
+            fontFamily: 'inherit',
+            color: 'inherit',
             mb: {xs: 2.5, sm: 3, md: 3},
             fontSize: { xs: '1.4rem', sm: '2.0rem', md: '2.5rem' },
             overflowWrap: 'break-word',
@@ -237,6 +246,7 @@ const LandingPage = () => {
           </Box>
         </Paper>
 
+        {/* THIS IS THE SECOND PAPER (Why Architech?), which should be fine */}
         <Paper
             elevation={0}
             sx={{
@@ -248,7 +258,7 @@ const LandingPage = () => {
             Why Architech?
           </Typography>
           <Grid container spacing={{xs: 2, md: 3}}>
-            {features.map((item, index) => ( 
+            {features.map((item, index) => (
                 <Grid item xs={12} sm={6} key={index}>
                     <FeatureItem {...item} />
                 </Grid>
