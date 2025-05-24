@@ -112,16 +112,16 @@ const LandingPage = () => {
             mb: {xs: 4, md: 6},
           }}
         >
-          <Typography variant="h5" component="p" sx={{ mb: 1, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold' }}>
+          <Typography variant="h5" component="p" sx={{ mb: 1, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold', fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.5rem' } }}>
             AI without prompt engineering?
           </Typography>
-          <Typography variant="h5" component="p" sx={{ mb: 1, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold' }}>
+          <Typography variant="h5" component="p" sx={{ mb: 1, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold', fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.5rem' } }}>
             Like throwing rocks at a supercar to start it.
           </Typography>
-          <Typography variant="h5" component="p" sx={{ mb: 2, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold' }}>
+          <Typography variant="h5" component="p" sx={{ mb: 2, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold', fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.5rem' } }}>
             You don't want that rattle. You want push button magic.
           </Typography>
-          <Typography variant="h1" component="p" sx={{ mt:3, mb: 3, fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit' }}>
+          <Typography variant="h1" component="p" sx={{ mt:3, mb: 3, fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit', fontSize: { xs: '2.5rem', sm: '3.25rem', md: '4.0rem' } }}>
             You want
           </Typography>
 
@@ -144,10 +144,10 @@ const LandingPage = () => {
             }}
           />
 
-          <Typography variant="h3" component="p" sx={{ mt:3, mb: 2, fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit' }}>
+          <Typography variant="h3" component="p" sx={{ mt:3, mb: 2, fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit', fontSize: { xs: '1.5rem', sm: '2.0rem', md: '2.5rem' } }}>
             To prompt easily.
           </Typography>
-          <Typography variant="h3" component="p" sx={{ fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit', mb: 3 }}> {/* Added mb for spacing before links */}
+          <Typography variant="h3" component="p" sx={{ fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit', mb: 3, fontSize: { xs: '1.5rem', sm: '2.0rem', md: '2.5rem' } } }> {/* Added mb for spacing before links */}
             To prompt like a Pro.
           </Typography>
 
