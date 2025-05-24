@@ -28,11 +28,11 @@ const FeatureItem = ({ icon, title, children, faIcon }) => {
           React.cloneElement(icon, { sx: { fontSize: 36 } })
         )}
       </Box>
-      <Box>
-        <Typography variant="h6" component="h3" sx={{ fontWeight: 'medium', mb: 0.5 }}>
+      <Box sx={{ minWidth: { sm: 0 } }}> {/* Allow this box to shrink when in a row */}
+        <Typography variant="h6" component="h3" sx={{ fontWeight: 'medium', mb: 0.5, overflowWrap: 'break-word' }}>
           {title}
         </Typography>
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant="body1" color="text.secondary" sx={{ overflowWrap: 'break-word' }}>
           {children}
         </Typography>
       </Box>
@@ -99,29 +99,58 @@ const LandingPage = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
+            justifyContent: 'flex-start',
             alignItems: 'center',
             minHeight: `calc(90vh - ${APP_BAR_HEIGHT}px - ${theme.spacing(8)})`,
             maxHeight: `calc(100vh - ${APP_BAR_HEIGHT}px - ${theme.spacing(4)})`,
             width: '100%',
             textAlign: 'center',
-            p: { xs: 2, sm: 4, md: 5 },
+            p: { xs: 2, sm: 3, md: 4 }, 
             fontFamily: theme.typography.monospace,
             color: heroTextColor,
-            overflow: 'hidden',
+            overflow: 'hidden', 
             mb: {xs: 4, md: 6},
           }}
         >
-          <Typography variant="h5" component="p" sx={{ mb: 1, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold', fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.5rem' } }}>
+          <Typography variant="h5" component="p" sx={{ 
+            mb: 1, 
+            fontFamily: 'inherit', 
+            color: 'inherit', 
+            fontWeight: 'bold', 
+            fontSize: { xs: '1.05rem', sm: '1.2rem', md: '1.5rem' },
+            overflowWrap: 'break-word',
+          }}>
             AI without prompt engineering?
           </Typography>
-          <Typography variant="h5" component="p" sx={{ mb: 1, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold', fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.5rem' } }}>
+          <Typography variant="h5" component="p" sx={{ 
+            mb: 1, 
+            fontFamily: 'inherit', 
+            color: 'inherit', 
+            fontWeight: 'bold', 
+            fontSize: { xs: '1.05rem', sm: '1.2rem', md: '1.5rem' },
+            overflowWrap: 'break-word',
+           }}>
             Like throwing rocks at a supercar to start it.
           </Typography>
-          <Typography variant="h5" component="p" sx={{ mb: 2, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold', fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.5rem' } }}>
+          <Typography variant="h5" component="p" sx={{ 
+            mb: {xs: 1.5, sm: 2}, 
+            fontFamily: 'inherit', 
+            color: 'inherit', 
+            fontWeight: 'bold', 
+            fontSize: { xs: '1.05rem', sm: '1.2rem', md: '1.5rem' },
+            overflowWrap: 'break-word',
+          }}>
             You don't want that rattle. You want push button magic.
           </Typography>
-          <Typography variant="h1" component="p" sx={{ mt:3, mb: 3, fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit', fontSize: { xs: '2.5rem', sm: '3.25rem', md: '4.0rem' } }}>
+          <Typography variant="h1" component="p" sx={{ 
+            mt: {xs: 2, sm: 2.5, md: 3}, 
+            mb: {xs: 2, sm: 2.5, md: 3}, 
+            fontWeight: 'bold', 
+            fontFamily: 'inherit', 
+            color: 'inherit', 
+            fontSize: { xs: '2.2rem', sm: '3.0rem', md: '4.0rem' },
+            overflowWrap: 'break-word',
+          }}>
             You want
           </Typography>
 
@@ -134,7 +163,7 @@ const LandingPage = () => {
               maxWidth: {xs: '85%', sm: '75%', md: '650px'},
               height: 'auto',
               borderRadius: '30px',
-              my: { xs: 2.5, md: 3.5 },
+              my: { xs: 2, sm: 2.5, md: 3.5 },
               border: `2px solid ${theme.palette.divider}`,
               transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
               '&:hover': {
@@ -144,10 +173,25 @@ const LandingPage = () => {
             }}
           />
 
-          <Typography variant="h3" component="p" sx={{ mt:3, mb: 2, fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit', fontSize: { xs: '1.5rem', sm: '2.0rem', md: '2.5rem' } }}>
+          <Typography variant="h3" component="p" sx={{ 
+            mt: {xs: 2, sm: 2.5, md: 3}, 
+            mb: {xs: 1, sm: 1.5, md: 2}, 
+            fontWeight: 'bold', 
+            fontFamily: 'inherit', 
+            color: 'inherit', 
+            fontSize: { xs: '1.4rem', sm: '2.0rem', md: '2.5rem' },
+            overflowWrap: 'break-word',
+          }}>
             To prompt easily.
           </Typography>
-          <Typography variant="h3" component="p" sx={{ fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit', mb: 3, fontSize: { xs: '1.5rem', sm: '2.0rem', md: '2.5rem' } } }> {/* Added mb for spacing before links */}
+          <Typography variant="h3" component="p" sx={{ 
+            fontWeight: 'bold', 
+            fontFamily: 'inherit', 
+            color: 'inherit', 
+            mb: {xs: 2.5, sm: 3, md: 3},
+            fontSize: { xs: '1.4rem', sm: '2.0rem', md: '2.5rem' },
+            overflowWrap: 'break-word',
+          }}>
             To prompt like a Pro.
           </Typography>
 
