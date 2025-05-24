@@ -3,7 +3,7 @@ import { Box, AppBar, Toolbar, Typography, IconButton, Container, Link as MuiLin
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import LandingPage from './components/LandingPage';
-import CountdownTimer from './components/CountdownTimer'; // Import the new component
+import CountdownTimer from './components/CountdownTimer';
 
 export const APP_BAR_HEIGHT = 64;
 
@@ -12,11 +12,6 @@ function App({ toggleTheme }) {
   const isDarkMode = theme.palette.mode === 'dark';
   const footerBgColor = alpha(theme.palette.background.paper, 0.55);
 
-  // Define the launch date.
-  // Important: Use a format that JavaScript's `Date` constructor understands well.
-  // ISO 8601 format "YYYY-MM-DDTHH:mm:ss" is generally reliable.
-  // This will be interpreted in the user's local timezone.
-  // If you want it to be UTC, append 'Z': "2025-06-06T00:00:00Z"
   const LAUNCH_DATE = "2025-06-06T00:00:00";
 
   return (
@@ -36,7 +31,7 @@ function App({ toggleTheme }) {
                 fontFamily: theme.typography.monospace,
                 fontWeight: 700,
                 letterSpacing: '.05rem',
-                mr: 2, // Add some margin if countdown is next to it
+                mr: 2,
               }}
             >
               Architech

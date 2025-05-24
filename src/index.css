@@ -16,8 +16,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* The body's actual background color will be set by MuiCssBaseline from theme.js */
-  /* It should become theme.palette.background.default (e.g., #fafafa or #303030) */
 }
 
 code {
@@ -25,47 +23,42 @@ code {
     monospace;
 }
 
-/* Default (Light Theme) Styles for the fixed background pattern div */
 #app-background {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1; /* Behind the body's content and its solid background color */
-  will-change: transform; /* Can help with rendering performance on some browsers */
-  background-color: transparent; /* IMPORTANT: Pattern is drawn over the body's solid background */
-  /* Light mode pattern lines */
+  z-index: -1;
+  will-change: transform;
+  background-color: transparent;
   background-image: repeating-linear-gradient(
     45deg,
-    #bdbdbd, /* grey[400] for light mode pattern lines */
+    #bdbdbd,
     #bdbdbd 0.5px,
     transparent 1px,
     transparent 5px
   );
-  transition: background-image 0.3s ease-in-out; /* Only transition the pattern lines if needed */
+  transition: background-image 0.3s ease-in-out;
 }
 
-/* Dark Theme Styles for the fixed background pattern div */
+
 body.theme-dark #app-background {
-  /* Dark mode pattern lines */
   background-image: repeating-linear-gradient(
     45deg,
-    #424242, /* grey[800] for dark mode pattern lines */
+    #424242,
     #424242 0.5px,
     transparent 1px,
     transparent 5px
   );
 }
 
-/* Ensure the React root container is transparent so the body's background (and #app-background behind it) shows through */
 #root {
-  /* width, height, and box-sizing are now handled by the 'html, body, #root' rule */
   position: relative;
   z-index: 0;
-  background-color: transparent !important; /* Ensure #root is transparent */
-  display: flex; /* Added for App.js structure */
-  flex-direction: column; /* Added for App.js structure */
+  background-color: transparent !important;
+  display: flex;
+  flex-direction: column;
 }
 
 .App {
@@ -107,16 +100,13 @@ body.theme-dark #app-background {
   }
 }
 
-/* --- Add Font Awesome Icon Styling --- */
-
-/* Style the Font Awesome icon component when used inside options */
 .option-icon {
-  margin-right: 8px;  /* Space between icon and text */
-  width: 1.1em;       /* Give it a consistent width for alignment */
-  text-align: center; /* Center icon within its space */
-  vertical-align: middle; /* Try to align vertically with text */
-  font-size: 0.9em; /* Make icon slightly smaller than text */
-  color: inherit; /* Inherit color from parent button/text by default */
+  margin-right: 8px;
+  width: 1.1em;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.9em;
+  color: inherit;
 }
 
 .MuiChip-root .option-icon {

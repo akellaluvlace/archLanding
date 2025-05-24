@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Typography, Box, useTheme } from '@mui/material';
+import { Typography, Box, useTheme, useMediaQuery } from '@mui/material';
 
 const CountdownTimer = ({ targetDate }) => {
   const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.only('xs'));
+  const isSm = useMediaQuery(theme.breakpoints.only('sm'));
 
   const calculateTimeLeft = useCallback(() => {
     const difference = +new Date(targetDate) - +new Date();
@@ -16,7 +18,7 @@ const CountdownTimer = ({ targetDate }) => {
         seconds: Math.floor((difference / 1000) % 60),
       };
     } else {
-      timeLeft = { launched: true }; // Indicate launch has passed
+      timeLeft = { launched: true };
     }
     return timeLeft;
   }, [targetDate]);
@@ -24,12 +26,9 @@ const CountdownTimer = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    // Recalculate on mount in case targetDate changed (though unlikely for this prop)
-    // or if the component was re-mounted after some time.
     const initialTimeLeft = calculateTimeLeft();
     setTimeLeft(initialTimeLeft);
 
-    // If already launched, no need for an interval
     if (initialTimeLeft.launched) {
       return;
     }
@@ -38,11 +37,11 @@ const CountdownTimer = ({ targetDate }) => {
       const newTimeLeft = calculateTimeLeft();
       setTimeLeft(newTimeLeft);
       if (newTimeLeft.launched) {
-        clearInterval(timer); // Stop timer if launched
+        clearInterval(timer);
       }
     }, 1000);
 
-    return () => clearInterval(timer); // Cleanup interval on component unmount
+    return () => clearInterval(timer);
   }, [targetDate, calculateTimeLeft]);
 
   const formatNumber = (num) => String(num).padStart(2, '0');
@@ -55,17 +54,39 @@ const CountdownTimer = ({ targetDate }) => {
     );
   }
 
-  if (Object.keys(timeLeft).length === 0) {
-    return null; // Or some loading/error state, but calculateTimeLeft should always return something
+  if (Object.keys(timeLeft).length === 0 || timeLeft.days === undefined) {
+    return null;
+  }
+
+  let timerDisplayString = `${timeLeft.days}D : ${formatNumber(timeLeft.hours)}H : ${formatNumber(timeLeft.minutes)}M : ${formatNumber(timeLeft.seconds)}S`;
+
+  if (isSm) {
+    timerDisplayString = `${timeLeft.days}D : ${formatNumber(timeLeft.hours)}H : ${formatNumber(timeLeft.minutes)}M`;
+  } else if (isXs) {
+    timerDisplayString = `${timeLeft.days}D : ${formatNumber(timeLeft.hours)}H`;
   }
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', color: 'inherit' }}>
-      <Typography variant="body2" sx={{ fontFamily: theme.typography.monospace, fontWeight: 'bold', mr: 0.5 }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'inherit', textAlign: 'center' }}>
+      <Typography
+        variant="body2"
+        sx={{
+          fontFamily: theme.typography.monospace,
+          fontWeight: 'bold',
+          mr: 0.5,
+          display: { xs: 'none', sm: 'inline' }
+        }}
+      >
         Launch:
       </Typography>
-      <Typography variant="body2" sx={{ fontFamily: theme.typography.monospace, fontWeight: 'bold' }}>
-        {timeLeft.days}D : {formatNumber(timeLeft.hours)}H : {formatNumber(timeLeft.minutes)}M : {formatNumber(timeLeft.seconds)}S
+      <Typography
+        variant="body2"
+        sx={{
+          fontFamily: theme.typography.monospace,
+          fontWeight: 'bold',
+        }}
+      >
+        {timerDisplayString}
       </Typography>
     </Box>
   );

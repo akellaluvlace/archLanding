@@ -1,28 +1,24 @@
 import React from 'react';
-// Removed Icon and Divider from this import as they were unused
-import { Box, Container, Typography, Grid, Paper, useTheme, alpha } from '@mui/material';
+import { Box, Container, Typography, Grid, Paper, useTheme, alpha, Link as MuiLink } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact, faPython, faGoogle, faStripe } from '@fortawesome/free-brands-svg-icons';
-import { faShieldAlt } from '@fortawesome/free-solid-svg-icons';
+import { faReact, faPython, faGoogle, faStripe, faReddit, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faShieldAlt, faUsersGear, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import SpeedIcon from '@mui/icons-material/Speed';
 import BuildIcon from '@mui/icons-material/Build';
-// Removed: import { grey } from '@mui/material/colors'; // This was unused
-import { APP_BAR_HEIGHT } from '../App'; // Assuming this path is correct
+import { APP_BAR_HEIGHT } from '../App';
 
 const FeatureItem = ({ icon, title, children, faIcon }) => {
-  // Removed: const theme = useTheme(); // This was unused in FeatureItem
   return (
     <Box
       sx={{
-        // Removed the first 'textAlign: 'left',' to resolve duplicate key
         p: {xs: 2, sm: 2.5},
         width: '100%',
         mb: {xs: 2, md: 2.5},
         display: 'flex',
         flexDirection: {xs: 'column', sm: 'row'},
         alignItems: {xs: 'center', sm: 'flex-start'},
-        textAlign: {xs: 'center', sm: 'left'}, // Kept this responsive textAlign
+        textAlign: {xs: 'center', sm: 'left'},
       }}
     >
       <Box sx={{ mr: {sm: 2.5}, mb: {xs: 1.5, sm: 0}, display: 'flex', justifyContent: 'center', color: 'primary.main' }}>
@@ -52,9 +48,52 @@ const LandingPage = () => {
   const projectImageUrl = theme.palette.mode === 'dark' ? darkThemeImageUrl : lightThemeImageUrl;
   const heroTextColor = theme.palette.text.primary;
 
+  const socialLinks = [
+    {
+      href: "https://www.reddit.com/user/AkellaArchitech/",
+      icon: faReddit,
+      text: "u/AkellaArchitech",
+      label: "AkellaArchitech on Reddit"
+    },
+    {
+      href: "https://x.com/AkellaArchitech",
+      icon: faXTwitter,
+      text: "@AkellaArchitech",
+      label: "AkellaArchitech on X"
+    },
+    {
+      href: "https://www.youtube.com/@AkellaArchitech",
+      icon: faYoutube,
+      text: "@AkellaArchitech",
+      label: "AkellaArchitech on YouTube"
+    }
+  ];
+
+  const features = [
+    {
+      faIcon: faUsersGear,
+      title: "Prompt Like an Expert, Effortlessly",
+      children: "Streamline your prompt engineering. Architech empowers novice and experienced users alike to build prompts with expert efficiency and optimal results, prioritizing user experience and workflow optimization."
+    },
+    {
+      faIcon: faGraduationCap,
+      title: "Explore & Master AI Prompting",
+      children: "A dynamic learning tool. Experiment with prompts, discover the vast capabilities of AI, and master the art of prompt creation within an intuitive, interactive environment."
+    },
+    { faIcon: faReact, title: "Robust Frontend", children: "Modern, responsive SPA built with React & MUI for a seamless user experience." },
+    { faIcon: faPython, title: "Powerful Backend", children: "Solid Django & PostgreSQL backend ensuring reliability and scalability." },
+    { icon: <BuildIcon />, title: "Intelligent Tools", children: "Guided prompt building, AI suggestions, task-oriented search, and advanced refinement tools." },
+    { icon: <SpeedIcon />, title: "Optimized Workflow", children: "Streamline your prompt engineering with features like direct editing, history, and strict/free modes." },
+    { faIcon: faGoogle, title: "Social Login", children: "Quick and easy access with Google authentication, powered by Django AllAuth." },
+    { faIcon: faStripe, title: "Trusted Payments", children: "Secure subscription management integrated with Stripe for peace of mind." },
+    { icon: <VerifiedUserIcon />, title: "Completely Secure", children: "HTTPS enabled and built with robust cyber security practices to protect your data." },
+    { faIcon: faShieldAlt, title: "User Focused Design", children: "Crafted for both beginners and experts to master AI prompt creation effortlessly." },
+  ];
+
+
   return (
     <Box sx={{ flexGrow: 1, width: '100%', py: {xs: 3, md: 4} }}>
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <Paper
           elevation={0}
           sx={{
@@ -73,16 +112,16 @@ const LandingPage = () => {
             mb: {xs: 4, md: 6},
           }}
         >
-          <Typography variant="h5" component="p" sx={{ mb: 1, fontFamily: 'inherit', color: 'inherit' }}>
+          <Typography variant="h5" component="p" sx={{ mb: 1, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold' }}>
             AI without prompt engineering?
           </Typography>
-          <Typography variant="h5" component="p" sx={{ mb: 1, fontFamily: 'inherit', color: 'inherit' }}>
+          <Typography variant="h5" component="p" sx={{ mb: 1, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold' }}>
             Like throwing rocks at a supercar to start it.
           </Typography>
-          <Typography variant="h5" component="p" sx={{ mb: 2, fontFamily: 'inherit', color: 'inherit' }}>
+          <Typography variant="h5" component="p" sx={{ mb: 2, fontFamily: 'inherit', color: 'inherit', fontWeight: 'bold' }}>
             You don't want that rattle. You want push button magic.
           </Typography>
-          <Typography variant="h1" component="p" sx={{ mt:3, mb: 3, fontWeight: 'medium', fontFamily: 'inherit', color: 'inherit' }}>
+          <Typography variant="h1" component="p" sx={{ mt:3, mb: 3, fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit' }}>
             You want
           </Typography>
 
@@ -94,23 +133,63 @@ const LandingPage = () => {
               width: '100%',
               maxWidth: {xs: '85%', sm: '75%', md: '650px'},
               height: 'auto',
-              borderRadius: '30px', // Keep existing border radius
+              borderRadius: '30px',
               my: { xs: 2.5, md: 3.5 },
-              border: `2px solid ${theme.palette.divider}`, // Added border
-              transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out', // Added transition
+              border: `2px solid ${theme.palette.divider}`,
+              transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
               '&:hover': {
-                transform: 'scale(1.02)', // Scale effect on hover
-                boxShadow: `0px 10px 20px ${alpha(theme.palette.common.black, 0.2)}`, // Shadow effect on hover
+                transform: 'scale(1.02)',
+                boxShadow: `0px 10px 20px ${alpha(theme.palette.common.black, 0.2)}`,
               },
             }}
           />
 
-          <Typography variant="h4" component="p" sx={{ mt:3, fontWeight: 'bold', fontFamily: 'inherit', color: 'text.secondary' }}>
+          <Typography variant="h3" component="p" sx={{ mt:3, mb: 2, fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit' }}>
             To prompt easily.
           </Typography>
-          <Typography variant="h4" component="p" sx={{ fontWeight: 'bold', fontFamily: 'inherit', color: 'text.secondary' }}>
-            To prompt like a pro.
+          <Typography variant="h3" component="p" sx={{ fontWeight: 'bold', fontFamily: 'inherit', color: 'inherit', mb: 3 }}> {/* Added mb for spacing before links */}
+            To prompt like a Pro.
           </Typography>
+
+          <Box
+            sx={{
+              mt: {xs: 2, sm: 3},
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: { xs: 2, sm: 4 },
+              width: '100%',
+              flexWrap: 'wrap',
+            }}
+          >
+            {socialLinks.map((link) => (
+              <MuiLink
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+                key={link.href}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  textDecoration: 'none',
+                  color: 'text.secondary',
+                  transition: theme.transitions.create('color', {
+                    duration: theme.transitions.duration.short,
+                  }),
+                  '&:hover': {
+                    color: 'primary.main',
+                  },
+                }}
+              >
+                <FontAwesomeIcon icon={link.icon} style={{ marginRight: theme.spacing(1), fontSize: '1.5rem' }} />
+                <Typography variant="body2" component="span" sx={{ fontFamily: 'inherit', fontWeight: 'medium' }}>
+                  {link.text}
+                </Typography>
+              </MuiLink>
+            ))}
+          </Box>
         </Paper>
 
         <Paper
@@ -124,16 +203,7 @@ const LandingPage = () => {
             Why Architech?
           </Typography>
           <Grid container spacing={{xs: 2, md: 3}}>
-            {[
-                { faIcon: faReact, title: "Robust Frontend", children: "Modern, responsive SPA built with React & MUI for a seamless user experience." },
-                { faIcon: faPython, title: "Powerful Backend", children: "Solid Django & PostgreSQL backend ensuring reliability and scalability." },
-                { icon: <BuildIcon />, title: "Intelligent Tools", children: "Guided prompt building, AI suggestions, task-oriented search, and advanced refinement tools." },
-                { icon: <SpeedIcon />, title: "Optimized Workflow", children: "Streamline your prompt engineering with features like direct editing, history, and strict/free modes." },
-                { faIcon: faGoogle, title: "Social Login", children: "Quick and easy access with Google authentication, powered by Django AllAuth." },
-                { faIcon: faStripe, title: "Trusted Payments", children: "Secure subscription management integrated with Stripe for peace of mind." },
-                { icon: <VerifiedUserIcon />, title: "Completely Secure", children: "HTTPS enabled and built with robust cyber security practices to protect your data." },
-                { faIcon: faShieldAlt, title: "User Focused Design", children: "Crafted for both beginners and experts to master AI prompt creation effortlessly." },
-            ].map((item, index) => (
+            {features.map((item, index) => ( 
                 <Grid item xs={12} sm={6} key={index}>
                     <FeatureItem {...item} />
                 </Grid>

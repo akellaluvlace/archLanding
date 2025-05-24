@@ -7,8 +7,8 @@ const targetLightTextGrey = grey[700];
 // --- Light Theme Colors ---
 const primaryColorLight = blue[600];
 const secondaryColorLight = teal[500];
-const backgroundColorDefaultLight = grey[100]; // Slightly off-white for body
-const backgroundColorPaperLight = '#ffffff'; // Will be made transparent by alpha in MuiPaper
+const backgroundColorDefaultLight = grey[100];
+const backgroundColorPaperLight = '#ffffff';
 const textPrimaryLight = targetLightTextGrey;
 const textSecondaryLight = grey[600];
 const dividerColorLight = alpha(grey[500], 0.2);
@@ -17,8 +17,8 @@ const disabledTextLight = grey[500];
 // --- Dark Theme Colors ---
 const primaryColorDark = blue[300];
 const secondaryColorDark = teal[300];
-const backgroundColorDefaultDark = grey[900]; // Body background
-const backgroundColorPaperDark = grey[800]; // Will be made transparent by alpha in MuiPaper
+const backgroundColorDefaultDark = grey[900];
+const backgroundColorPaperDark = grey[800];
 const textPrimaryDark = grey[50];
 const textSecondaryDark = grey[400];
 const dividerColorDark = alpha(grey[500], 0.3);
@@ -28,7 +28,7 @@ const monospaceFontStack = '"SFMono-Regular", Consolas, "Liberation Mono", Menlo
 
 const baseThemeOptions = {
   shape: {
-    borderRadius: 22, // Slightly increased for modern feel
+    borderRadius: 22,
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -99,18 +99,18 @@ const baseThemeOptions = {
         },
     },
     h6: {
-        fontWeight: 600, // Kept original weight
-        fontSize: '1.1rem', // Kept original size
-        marginBottom: '1rem', // Kept original margin
-        '@media (max-width:599.95px)': { // Kept original responsive
+        fontWeight: 600,
+        fontSize: '1.1rem',
+        marginBottom: '1rem',
+        '@media (max-width:599.95px)': {
             fontSize: '1rem',
             marginBottom: '0.75rem',
         },
     },
     body1: {
-      fontSize: '1.1rem', // Kept original size
-      lineHeight: 1.7, // Kept original line height
-       '@media (max-width:599.95px)': { // Kept original responsive
+      fontSize: '1.1rem',
+      lineHeight: 1.7,
+       '@media (max-width:599.95px)': {
         fontSize: '1rem',
       },
     },
@@ -133,13 +133,13 @@ const baseThemeOptions = {
        sharp: 'cubic-bezier(0.4, 0, 0.6, 1)',
      },
   },
-  shadows: [ // Subtle shadows for glass cards
+  shadows: [
     'none',
-    '0px 4px 6px -1px rgba(0,0,0,0.05), 0px 2px 4px -1px rgba(0,0,0,0.03)', // shadow[1]
-    '0px 10px 15px -3px rgba(0,0,0,0.05), 0px 4px 6px -2px rgba(0,0,0,0.02)', // shadow[2]
-    '0px 20px 25px -5px rgba(0,0,0,0.05), 0px 10px 10px -5px rgba(0,0,0,0.02)', // shadow[3]
-    '0px 25px 50px -12px rgba(0,0,0,0.1)', // shadow[4] - A slightly stronger shadow for hover/emphasis
-    ...Array(20).fill('none'), // Fill remaining shadows
+    '0px 4px 6px -1px rgba(0,0,0,0.05), 0px 2px 4px -1px rgba(0,0,0,0.03)',
+    '0px 10px 15px -3px rgba(0,0,0,0.05), 0px 4px 6px -2px rgba(0,0,0,0.02)',
+    '0px 20px 25px -5px rgba(0,0,0,0.05), 0px 10px 10px -5px rgba(0,0,0,0.02)', 
+    '0px 25px 50px -12px rgba(0,0,0,0.1)',
+    ...Array(20).fill('none'),
   ],
   components: {
     MuiCssBaseline: {
@@ -179,7 +179,7 @@ const baseThemeOptions = {
           backgroundColor: alpha(theme.palette.background.paper, 0.3),
           backdropFilter: 'blur(2px)',
           boxShadow: theme.shadows[2],
-          borderRadius: theme.shape.borderRadius, // Uses the updated borderRadius
+          borderRadius: theme.shape.borderRadius,
         }),
       }
     },
@@ -188,7 +188,7 @@ const baseThemeOptions = {
         root: ({ theme }) => ({
           backgroundColor: alpha(theme.palette.mode === 'light' ? theme.palette.grey[200] : theme.palette.grey[800], 0.6),
           backdropFilter: 'blur(2px)',
-          borderBottom: `1px solid 0px`,
+          borderBottom: `1px solid ${alpha(theme.palette.divider, 0.2)}`,
           boxShadow: 'none',
           color: theme.palette.text.primary,
         }),
@@ -211,14 +211,14 @@ const baseThemeOptions = {
         containedPrimary: ({ theme }) => ({
              boxShadow: theme.shadows[1],
              '&:hover': {
-                 backgroundColor: theme.palette.primary.dark, // Ensure primary.dark exists
+                 backgroundColor: theme.palette.primary.dark,
                  boxShadow: theme.shadows[2],
              }
         }),
          containedSecondary: ({ theme }) => ({
              boxShadow: theme.shadows[1],
              '&:hover': {
-                 backgroundColor: theme.palette.secondary.dark, // Ensure secondary.dark exists
+                 backgroundColor: theme.palette.secondary.dark,
                  boxShadow: theme.shadows[2],
              }
         }),
@@ -235,7 +235,7 @@ const baseThemeOptions = {
                }),
                ...(theme.palette.mode === 'dark' && {
                   '&:hover': {
-                     backgroundColor: theme.palette.action.hover, // Ensure action.hover exists
+                     backgroundColor: theme.palette.action.hover,
                      borderWidth: '1.5px',
                   }
                }),
@@ -357,20 +357,20 @@ const getTheme = (mode) => {
         ? {
             primary: {
               main: primaryColorLight,
-              light: blue[400], // Added for completeness
-              dark: blue[800],  // Added for completeness
-              contrastText: '#ffffff', // Added for completeness
+              light: blue[400],
+              dark: blue[800],
+              contrastText: '#ffffff',
             },
             secondary: {
               main: secondaryColorLight,
-              light: teal[300], // Added for completeness
-              dark: teal[700], // Added for completeness
-              contrastText: '#ffffff', // Added for completeness
+              light: teal[300],
+              dark: teal[700],
+              contrastText: '#ffffff',
             },
             background: { default: backgroundColorDefaultLight, paper: backgroundColorPaperLight },
             text: { primary: textPrimaryLight, secondary: textSecondaryLight, disabled: disabledTextLight },
             divider: dividerColorLight,
-            action: { // Added full action object for light mode
+            action: {
               active: primaryColorLight,
               hover: alpha(primaryColorLight, 0.08),
               selected: alpha(primaryColorLight, 0.16),
@@ -379,23 +379,23 @@ const getTheme = (mode) => {
               focus: alpha(primaryColorLight, 0.12),
             },
           }
-        : { // Dark mode
+        : {
             primary: {
               main: primaryColorDark,
-              light: blue[100], // Added for completeness
-              dark: blue[400], // Added for completeness
-              contrastText: grey[900], // Added for completeness
+              light: blue[100],
+              dark: blue[400],
+              contrastText: grey[900],
             },
             secondary: {
               main: secondaryColorDark,
-              light: teal[100], // Added for completeness
-              dark: teal[400], // Added for completeness
-              contrastText: grey[900], // Added for completeness
+              light: teal[100],
+              dark: teal[400],
+              contrastText: grey[900],
             },
             background: { default: backgroundColorDefaultDark, paper: backgroundColorPaperDark },
             text: { primary: textPrimaryDark, secondary: textSecondaryDark, disabled: disabledTextDark },
             divider: dividerColorDark,
-            action: { // Added full action object for dark mode
+            action: {
               active: primaryColorDark,
               hover: alpha(primaryColorDark, 0.1),
               selected: alpha(primaryColorDark, 0.2),

@@ -4,7 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import App from './App';
 import getTheme from './theme';
-import './index.css'; // Ensure this is imported
+import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 
 const getInitialMode = () => {
@@ -16,14 +16,14 @@ const getInitialMode = () => {
   } catch (error) {
     console.error("Could not read landingThemeMode from localStorage", error);
   }
-  return 'dark'; // Default to dark
+  return 'dark';
 };
 
 function RootApp() {
   const [mode, setMode] = useState(getInitialMode());
 
   useEffect(() => {
-    document.body.classList.remove('theme-light', 'theme-dark'); // Clear previous
+    document.body.classList.remove('theme-light', 'theme-dark');
     if (mode === 'dark') {
       document.body.classList.add('theme-dark');
     } else {
@@ -45,7 +45,7 @@ function RootApp() {
   return (
     <React.StrictMode>
       <ThemeProvider theme={theme}>
-        <CssBaseline /> {/* This applies theme.palette.background.default to body */}
+        <CssBaseline />
         <BrowserRouter>
           <App toggleTheme={toggleTheme} />
         </BrowserRouter>
